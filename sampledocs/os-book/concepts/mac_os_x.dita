@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/dtd/concept.dtd" []>
+<concept audience="developer" id="mac-os-x-id" product="1.0">
+  <title>Apple's OS X</title>
+  <abstract><shortdesc>OS X /ˌoʊ ɛs ˈtɛn/, previously Mac OS X, is a series of Unix-based graphical
+      interface operating systems developed, marketed, and sold by Apple Inc. It is designed to run
+      exclusively on Mac computers, having been pre-loaded on all Macs since 2002. </shortdesc>It
+    was the successor to Mac OS 9, released in 1999, the final release of the "classic" Mac OS,
+    which had been Apple's primary operating system since 1984. The first version released was Mac
+    OS X Server 1.0 in 1999, and a desktop version, Mac OS X v10.0 "Cheetah" followed on March 24,
+    2001. Previous releases of OS X were named after big cats; for example, OS X v10.8 was referred
+    to as "Mountain Lion". However, with the announcement of OS X Mavericks this was dropped in
+    favor of Californian landmarks.</abstract>
+  <conbody>
+    <section>
+      <title>Naming</title>
+      <p>OS X, whose X is the Roman numeral for 10 and is a prominent part of its brand identity, is
+        built on technologies developed at NeXT between the second half of the 1980s and Apple's
+        purchase of the company in late 1996. The 'X' is also used to emphasize the relatedness
+        between OS X and UNIX. Versions 10.5 "Leopard" running on Intel processors, 10.6 "Snow
+        Leopard", 10.7 "Lion", 10.8 "Mountain Lion", and 10.9 "Mavericks" have obtained UNIX 03
+        certification. iOS, which runs on the iPhone, iPod Touch, iPad, and the 2nd and 3rd
+        generation Apple TV, shares the Darwin core and many frameworks with OS X. An unnamed
+        variant of v10.4 powered the first generation Apple TV.</p>
+    </section>
+
+    <section id="kernel-id">
+      <title>Mac OS X kernel</title>
+      <p>OS X is based upon the Mach kernel. Certain parts from FreeBSD's and NetBSD's
+        implementation of Unix were incorporated in NeXTSTEP, the core of Mac OS X. NeXTSTEP was the
+        graphical, object-oriented, and UNIX-based operating system developed by Steve Jobs' company
+        NeXT after he left Apple in 1985. While Jobs was away from Apple, Apple tried to create a
+        "next-generation" OS through the Taligent, Copland and Gershwin projects, with little
+        success.[16] Eventually, NeXT's OS, then called OPENSTEP, was selected to be the basis for
+        Apple's next OS, and Apple purchased NeXT outright. Steve Jobs returned to Apple as interim
+        CEO, and later became CEO, shepherding the transformation of the programmer-friendly
+        OPENSTEP into a system that would be adopted by Apple's primary market of home users and
+        creative professionals. The project was first known as Rhapsody and was later renamed to Mac
+        OS X.</p>
+    </section>
+  </conbody>
+</concept>

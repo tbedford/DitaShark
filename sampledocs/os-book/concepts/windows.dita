@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/dtd/concept.dtd" []>
+<concept audience="developer" id="windows-id" product="1.0">
+  <title>The Microsoft Windows Operating System</title>
+  <abstract><shortdesc>Microsoft Windows is a series of graphical interface operating systems
+      developed, marketed, and sold by Microsoft.</shortdesc>Microsoft introduced an operating
+    environment named Windows on November 20, 1985 as a graphical operating system shell for MS-DOS
+    in response to the growing interest in graphical user interfaces (GUI). Microsoft Windows came
+    to dominate the world's personal computer market with over 90% market share, overtaking Mac OS,
+    which had been introduced in 1984.</abstract>
+  <conbody>
+    <section>
+      <title>History</title>
+      <p>The history of Windows dates back to September 1981, when Chase Bishop, a computer
+        scientist, designed the first model of an electronic device and project "Interface Manager"
+        was started. It was announced in November 1983 (after the Apple Lisa, but before the
+        Macintosh) under the name "Windows", but Windows 1.0 was not released until November 1985.
+        Windows 1.0 achieved little popularity and was to compete with Apple's own operating system.
+        Windows 1.0 is not a complete operating system; rather, it extends MS-DOS. The shell of
+        Windows 1.0 is a program known as the MS-DOS Executive. Components included Calculator,
+        Calendar, Cardfile, Clipboard viewer, Clock, Control Panel, Notepad, Paint, Reversi,
+        Terminal and Write. Windows 1.0 does not allow overlapping windows. Instead all windows are
+        tiled. Only modal dialog boxes may appear over other windows.</p>
+    </section>
+  </conbody>
+</concept>

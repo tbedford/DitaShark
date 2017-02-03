@@ -1,0 +1,97 @@
+/* Debug CSS style sheet for documentation - experimental */
+
+p {
+    color: blue;
+}
+
+h1 {
+    color: red;
+}
+
+h2 {
+    color: green;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    color: orange;
+    text-align: left;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+/* 
+ * We could get fancy and differently style internal and external
+ * links 
+*/
+
+a {
+    color: brown;
+}
+
+a:hover {
+    color: red;
+}
+
+dt {
+
+    font-weight: bold;
+}
+
+
+.section {
+    background-color: #eeeeee;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 0.875em;
+}
+
+.title {
+    text-transform: uppercase;
+}
+
+.sectiontitle {
+    text-transform: capitalize;
+    
+}
+
+.abstract {
+    background-color: #6ce26c;
+    color: black;
+}
+
+.shortdesc {
+
+    background-color: #ff8000;
+    color: black;
+
+}
+
+.footer {
+
+    text-align: center;
+    background-color: #ff3333;
+    color: #FFFFFF;
+
+}
+
+
+#dthd {
+    text-transform: uppercase;
+    color: brown;
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+#ddhd {
+    text-transform: uppercase;
+    color: brown;
+    text-decoration: underline;
+    font-weight: normal;
+}

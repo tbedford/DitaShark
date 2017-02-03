@@ -1,0 +1,285 @@
+:toc:
+
+== DitaShark Documentation
+
+DitaShark is a renderer that converts DITA XML source files into
+HTML(5) output. It does not use any of Java, Ant, Maven, XSLT and
+other bloatware. It typically processes files in 4k chunks (k not
+G). It is fast and efficient and implemented in PHP.
+
+DitaShark processes DitaMaps recursively, so you don't need to build
+all DITA files in a directory, you can just build the document you
+need by pointing DitaShark at a base DitaMap.
+
+== Usage
+
+The following will run DitaShark, using sample.ini as the build file:
+
+[source,bash]
+----
+./shark
+----
+
+NOTE: You will need to edit shark.php if you want to use a different
+build file.
+
+== DITA Parser/Renderer Notes
+
+
+=== Notes on DITA Renderer architecture
+
+Basic architecture:
+
+Driver Script -> Map file reader -> Parser -> Renderer -> Database
+connector -> SQLLite ...
+
+The DataBase renderer should actually be a subclass of HTMLRenderer,
+because HTML is still written out. However there are a couple of
+differences. The main difference is in how meta data is handled. In
+the case of writing directly to HTML files, the meta data is written
+into the HTML file head as <meta> elements, whereas in the case of a
+database it must be written out to a database record. In both cases
+the metadata is collected into a Prolog object. In the case of writing
+to HTML files the metadata is extracted and rendered into the HTML
+<head>, in the database case the DatabaseWriter will extract the
+metadata and writer it to a database record via the DatabaseWriter.
+
+=== FileWriter vs DatabaseWriter
+
+
+The FileWriter takes a rendered document and then opens a file, writes
+the document, and then closes the file. In the case of the
+DatabaseWriter, the DBWriter will open a database connection, extract
+metadata from the prolog object, build the database record, write the
+record and then close the database connection.
+
+As an optmization the database connection can be held open for the
+build process, and the controlling program closes the database
+connection when done.
+
+=== Build Configuration
+
+There should be a simple XML file that controls the build/render
+process. For example you may have a configuration entry that specifies
+the CSS style sheet to include:
+
+[source,xml]
+----
+<config>
+    <css>midnight.css</css>
+    <syntax-highlighting>false</syntax-highlighting>
+    ...
+</config>
+----
+
+Currently this is done with PHP config files because it's very quick
+to load and easy to parse. sample.ini:
+
+----
+; Config::$config = parse_ini_file("sample.ini");
+
+[general]
+
+; other options include pdf, database, epub
+render_type = "html" 
+
+; can be absolute, relative, or left blank (default is ./output/ ) 
+output_dir = "./output_test"
+
+; can be relative or absolute (realpath should be used to convert it)
+map_file = "../sampledocsets/os-book/ditamaps/operating_systems.ditamap"
+
+; can be relative or absolute (realpath should be used to convert it)
+stylesheet = "../css/debug.css"
+----
+
+=== Database / CMS
+
+For the database renderer the most likely target is MySQL, however I'd
+like to support several databases:
+
+Free:
+- SQLLite (small, fast and lite - do this first, this is a must)
+
+Commercial:
+- PDO (for generic database support)
+- mysqli (for fast MySQL support)
+- MongoDB (a fast, light NoSQL database)
+
+=== CMS Connectors / Drupal Connector
+
+I think it's going to be important to support export to CMS systems,
+such as Drupal, Wordpress and CMS Made Simple. Drupal is the obvious
+first choice.
+
+=== Angelfish Doc Server
+
+As well as "DitaShark", and the database/CMS connectors, an important
+component of the overall system is Angelfish. Angelfish is not a CMS
+in the true sense of the term, it should be consider as a
+"documentation server" - its purpose being to serve documentation to
+users. In the first version Angelfish will serve XHTML content
+dynamically from a SQLLite database (for speed, efficiency and
+simplicity). It's possible that in the future Angelfish could be
+expanded to support commenting, feedback, stats and other management
+features.
+
+- search (hook into Google - look at other solutions)
+- analytics
+
+
+=== Barracuda Doc Build/release Manager
+
+Barracuda release manager is a web-based system to manage builds,
+staging and release of documentation.
+
+NOTE: Jenkins should be able to do this (research it).
+
+=== Validation phase
+
+The parser has to assume valid DITA - there will be a validation phase
+before the parser converts everything to HTML. (Oxygen and Componize
+do this for us!)  Ultimately we might need to write a script that
+calls xmllint to do this for us.
+
+
+=== Other phases
+
+Other possible phases:
+
+- IDmap creation
+- Spell checking
+- Link checking
+- Validation (of DITA XML)
+- XML formatting (xmllint?)
+
+There may be other steps such as creation of indexes, create TOC,
+export to database, spell checking, link validation.
+
+=== XREFs
+
+A hyperlink to an external Web page (URL) or other non-DITA resource,
+to another DITA topic in the same file or in another file, or to a
+specific element inside a DITA topic. The format attribute identifies
+the format of the target.  Non-DITA targets use standard URL
+syntax. DITA content is targeted as follows.
+
+Target elsewhere in the same file:
+  - href="#topicID"
+  - href="#topicID/elemID
+
+Target in a different file:
+  - href="filename.dita#topicID"
+  - href="fname.dita#topicID/elemID"
+
+Elements inside a topic need to have their location scoped by the
+containing topic's ID. Only the ID of the target element and the topic
+that contains it matter: id's on any other containing elements (for
+example an id on the <body> element) are not part of the link syntax.
+
+If the URL contains an ampersand character, the ampersand symbol
+(&amp;) should be used to indicate that character.
+
+== Directory structure
+
+An efficient and flexible storage arrangement for ditamaps and dita
+files is one where all paths are specified with respect to
+doc_root. This allows a ditamap in one directory to reference in
+another directory with ease. In practice users will specify path names
+with respect to the current ditamap - this is to be discouraged as it
+incurs a processing overhead, as the paths need to be converted to
+relative to doc_root, or the current working directory needs to be
+changed in order to load files correctly. However, this needs to be
+supported as many existing installations are set up
+this way. Fortunately ditashark uses a multi-pass process. Ditamap
+file names and dita file names can be converted to relative to
+doc-root - confining the processing overhead to the first
+pass. Subsequent loading and processing of ditamap files can therefore
+take place must faster.
+
+
+== TODO
+
+
+* make sure realpath is used on CSS file and ditamap file
+* Test new directory layout and new ditashark script
+* check into GitHub (think about directory structure - docs
+  sets should be in a separate tree from ditashark)
+* add support for more tags. Target - get the iOS docs building! 
+* more meta data/prolog support
+
+
+Need a major rethink about directory structure / layout / output /
+build and doc roots.
+
+    * ditashark (contains PHP source and code)
+    * docs (your docs source tree)
+    * output_dir (where docs get built to)
+    * in the root of the docs source tree you would have doc projects
+
+----
+    docs/
+          - API_Reference/
+            - build files build1.ini, build2.ini
+            - ditamaps/
+            - concepts/
+            - references/
+            - tasks/
+----
+
+- when you run the ditashark script you pass a build file as a
+  parameter. All config is contained in the build file (which is
+  basically a PHP INI file). You run the ditashark.sh script in the
+  same directory as the build file. This is the doc_root.
+
+- TOC (decided to build standard docssets with static HTML and TOC initially to test renderer)
+- Design database tables for DatabaseRenderer version
+- there should be a debug option "build with visible metadata" that
+  displays metadata in a box
+- metadata for search: keywords, index entries etc. <-- need a
+  strategy for dealing with this stuff
+- ultimately this needs to be intergated with Git
+- run HTML document through HTML tidy before writing out? maybe, but
+  for database renderer we should compress HTML
+- what I currently call the doc_root is actually the build root, the
+  doc root is something else
+- UTF-8 chars currently don't display correctly 
+- handle absolute or relative output directory (currently only
+  relative is handled)
+- add command line option support
+- add execution time for benchmarking purposes
+- add count of ditamaps and dita files chewed.
+- Don't change into directory (chdir()) unless absolutely required
+- Evaluate Geshi syntax highlighter
+- way to track PHP memory usage??
+- Build to SQLLite is now top priority target (dynamic TOC)
+- BOOK: Building information systems with DITA and DitaShark
+- command line processing and main driver script
+- need to change parser to accept filename rather than use STDIN (as we need the filename to generate correct output file name?? CHECK THIS)
+- Error codes / error handling
+- build shell script to run ./map.php to get a list of files and then put each file into ./dita_render.php
+  and write out to filename.html. Or convert dita_render to read x.dita and write *.html
+- add reference topic to sample docs (use wikipedia info box + image!!)
+- topic summaries in web pages
+- Need to make sure we handle the case where there might be an &amp; in an Xref URL.
+- Need to make sure that URL escape handling is correct.
+- UTF-8/Unicode testing
+- call HTMLTidy from PHP (built in) to tidy generated HTML
+- configure style via XML (CSS)
+
+New tags/features to support:
+- <image>
+- <prolog> - decide on useful meta data to support (mainly for RenderDatabase)
+- <topicmeta> - inside ditamaps
+- <codeph> - with syntax highlighting
+- <note>
+- Task related topics
+- Reference related topics
+- related links
+- PDF
+- HTML TOC
+- Drupal export
+- indexing
+
+
+

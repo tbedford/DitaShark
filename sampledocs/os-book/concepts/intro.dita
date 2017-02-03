@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/dtd/concept.dtd" []>
+<concept audience="developer" id="intro-id" product="1.0">
+  <title>Introduction to Operating Systems</title>
+  <abstract><shortdesc>Operating systems are available in several varieties. They each have their
+      own peculiarities. Some are bloated and slow, others are small and fast. The purpose of this
+      document to to help you find the best operating system for your needs.</shortdesc>In addition
+    to basic characteristics such as size and speed, operating systems can be divided into
+    commercial and free, and also open source and closed source. These are important issues for
+    every business to consider before adpotion (I'm leaving delibrate spelling mistaks in for
+    testing the spel chocker).</abstract>
+  <prolog>
+    <author>Tony Bedford</author>
+    <copyright>
+      <copyryear year="2014"/>
+      <copyrholder>Anthead Software, Ltd.</copyrholder>
+    </copyright>
+    <metadata>
+      <!-- You can have multiple audiences, with different experience levels etc. -->
+      <audience type='programmer' job='customizing' experiencelevel='expert' />
+      <audience type='administrator' job='customizing' experiencelevel='expert' />
+      <audience type='other' othertype='support engineer' job='other' otherjob='supporting' experiencelevel='general' />
+      <!-- These could be extracted to create a list of categories in the CMS -->
+      <category>Customizing widgets</category>
+      <category>Troubleshooting widgets</category>
+    </metadata>
+  </prolog>
+  <conbody>
+    <section>
+      <title>The main operating systems</title>
+      <p>This documentation will consider three main operating systems:</p>
+      <ol>
+        <li>Windows</li>
+        <li>Linux</li>
+        <li>OS X</li>
+      </ol>
+      <p>In this documentation an operating is sometimes referred to as an OS.</p>
+      <p>These operating systems were mostly created by big companies, although Linux was created by
+        an individual.</p>
+      <p><!-- redundant <p> deliberate, but not required -->
+        <simpletable>
+          <sthead>
+            <stentry>OS</stentry>
+            <stentry>Company</stentry>
+            <stentry>Founder</stentry>
+            <stentry>Website</stentry>
+          </sthead>
+          <strow>
+            <stentry>Windows</stentry>
+            <stentry>Microsoft</stentry>
+            <stentry>Bill Gates and Paul Allen</stentry>
+            <stentry><xref scope="external" format="html" href="http://www.microsoft.com"
+              /></stentry>
+          </strow>
+          <strow>
+            <stentry>Linux</stentry>
+            <stentry>n/a</stentry>
+            <stentry>Linus Torvalds</stentry>
+            <stentry><xref scope="external" format="html" href="http://www.linux.org"/></stentry>
+          </strow>
+          <strow>
+            <stentry>OS X</stentry>
+            <stentry>Apple</stentry>
+            <stentry>Steve Jobs and Steve Wozniak</stentry>
+            <stentry><xref scope="external" format="html" href="http://www.apple.com"/></stentry>
+          </strow>
+        </simpletable>
+      </p>
+    </section>
+  </conbody>
+</concept>

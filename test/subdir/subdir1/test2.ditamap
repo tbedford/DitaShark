@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "http://docs.oasis-open.org/dita/v1.1/OS/dtd/map.dtd" []>
+<map id="ditamap-test2" title="DITAMAP to test MapReader class">
+
+  <topicref href="test21.dita" />
+  <topicref href="test22.dita" />
+
+  <topicref format="ditamap" href="../../subdir2/test3.ditamap" />
+
+</map>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "http://docs.oasis-open.org/dita/dtd/concept.dtd" []>
+<concept audience="developer" id="linux-id" product="1.0">
+  <title>Linux</title>
+  <abstract><shortdesc>Linux is a Unix-like and POSIX-compliant computer operating system assembled
+      under the model of free and open source software development and distribution. The main form
+      of distribution are Linux distributions.</shortdesc>The defining component of Linux is the
+    Linux kernel, an operating system kernel first released on 5 October 1991, by Linus Torvalds.
+    Because it considers Linux to be a variant of the GNU operating system, initiated in 1983 by
+    Richard Stallman, the Free Software Foundation prefers the name GNU/Linux when referring to the
+    operating system as a whole (see GNU/Linux naming controversy).</abstract>
+  <conbody>
+    <section>
+      <title>The birth of Linux</title>
+      <p>In 1991 while attending the University of Helsinki, Torvalds became curious about operating
+        systems and frustrated by the licensing of MINIX, which limited it to educational use only.
+        He began to work on his own operating system which eventually became the Linux kernel.</p>
+      <p>Torvalds began the development of the Linux kernel on MINIX, and applications written for
+        MINIX were also used on Linux. Later Linux matured and further Linux development took place
+        on Linux systems. GNU applications also replaced all MINIX components, because it was
+        advantageous to use the freely available code from the GNU Project with the fledgling
+        operating system. (Code licensed under the GNU GPL can be reused in other projects as long
+        as they also are released under the same or a compatible license.) Torvalds initiated a
+        switch from his original license, which prohibited commercial redistribution, to the GNU
+        GPL. Developers worked to integrate GNU components with Linux to make a fully functional and
+        free operating system.</p>
+    </section>
+    <section>
+      <title>Current development</title>
+      <p>Torvalds continues to direct the development of the kernel. Stallman heads the Free
+        Software Foundation, which in turn supports the GNU components. Finally, individuals and
+        corporations develop third-party non-GNU components. These third-party components comprise a
+        vast body of work and may include both kernel modules and user applications and libraries.
+        Linux vendors and communities combine and distribute the kernel, GNU components, and non-GNU
+        components, with additional package management software in the form of Linux
+        distributions.</p>
+    </section>
+  </conbody>
+</concept>

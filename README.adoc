@@ -1,0 +1,84 @@
+== DitaShark
+
+NOTE: See also docs/docs.adoc for more detailed information.
+
+WARNING: This software is entirely experimental, with no warranties
+stated or implied - use at your own risk!
+
+DitaShark is a command-line PHP program that converts DITA XML source
+to HTML.
+
+It does not use any of Java, XSLT, Ant, Maven, JDKs, JREs etc. and is
+small, fast and efficient, typically working with text files in 4K
+chunks.
+
+This was designed to be a smaller, faster, more efficient alternative
+to the DITA Open Toolkit (DITA-OT), although as DitaShark requires no
+changes to the DITA source files, it works quite happily in
+conjunction with DITA-OT.
+
+The other great advantage of DitaShark, besides efficiency, is that it
+generates HTML that is compatible with mobile devices. DITA-OT toolkit
+generates HTML that uses frames, and these documents do not display
+correctly on many mobile devices such as iPad and iPhone.
+
+DitaShark processes DITA files by recursively processing a
+DitaMap. The recursion is carefully managed so as to keep stack usage
+reasonable.This has to be recursive as DitaMaps can reference DitaMaps
+and so on. DitaShark builds a list of all Dita files to be converted,
+and then converts them to (currently) HTML4 Strict. HTML5 was planned
+for the future.
+
+A potentially faster option is rather than working through the tree of
+files referenced from the Ditamap to simply convert all files with the
+dita extension, working from a root directory. This is more efficient
+for root Ditamap builds.
+
+== Status
+
+No longer developed.
+
+DitaShark was a proof-of-concept (POC) project to test the efficiency
+of rendering DITA XML source files directly into HTML, without using
+XSLT. The concept was successfully proved, but currently not all DITA
+tags are supported (just enough to support POC and create some simple
+documents). It would be straightforward, but quite time-consuming, to
+add support for all DITA elements, as there are several hundred of
+them!
+
+
+== Requirements
+
+You need PHP available on the command line. I have only tested with
+PHP version 5.5.20.
+
+You also need to use a syntax highlighter if you want coloured
+codeblocks. I used Alex Gorbachev's SyntaxHighlighter and was very
+pleased with it. There are several now widely available.
+
+== Installation
+
+You need to install the SyntaxHighlighter project by Alex Gorbachev if
+you want to have syntax colouring in your code blocks. See the README
+in the highlighter directory for further information.
+
+
+== Usage
+
+Create a suitable build file.
+
+Run the shark shell script:
+
+----
+./shark.sh
+----
+
+
+== Copyright
+
+Copyright (c) 2013 - 2016 Tony Bedford. Free use of this software is
+granted under the terms of the MIT license.
+
+== Author
+
+Original code by Tony Bedford (@tbedford).
