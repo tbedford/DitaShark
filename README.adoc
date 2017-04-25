@@ -1,5 +1,7 @@
 == DitaShark
 
+UPDATE: I now have a much faster and more memory efficient way of doing this. Stay tuned!
+
 NOTE: See also docs/docs.adoc for more detailed information.
 
 WARNING: This software is entirely experimental, with no warranties
