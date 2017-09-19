@@ -1,7 +1,17 @@
 == DitaShark
 
-UPDATE: I now have a much faster and more memory efficient way of doing this. Stay tuned!
+----
 
+** UPDATE: I now have a much faster and more memory efficient way of doing this. See DITA2HTML repo for a much simpler and more efficient way.**
+
+Although this proved the basic concept (you can convert DITA without DITA-OT and all that jazz), in retrospect looking over this old code it's quite horrible. It's WAY too complex. The idea of parsing ditamaps so that you only convert the necessary dita files for that build seemed sensible at the time, but it adds complexity. That whole business of recursively parsing ditamaps and pushing things to be processed later onto the stack was also unnecessarily complicated (and a somewhat daft way to do things). 
+
+In the simpler design I am planning, you can save on complexity by simply convert all DITA files. The PHP code (or whatever is used) is fed one file by a BASH shell script (basically something like `find . -name "*.dita" | xargs -- dita2html.sh`) and it converts it. Job done. Because this is so fast it doesn't matter if you convert files unnecessarily. There are some optimizations here too. The other script needed is a PHP script to process the Ditamap file. Again you do one at a time which is much simpler, and use a shell script to do them in bulk. The actual nature of this script depends on your target TOC control.
+
+I plan to do a very simple test of this idea in the Dita2Html repo. It will be be bare bones though due to lack of time.
+
+Everything below here should be considered junk!!
+----
 NOTE: See also docs/docs.adoc for more detailed information.
 
 WARNING: This software is entirely experimental, with no warranties
