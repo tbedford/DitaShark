@@ -1,6 +1,6 @@
 == DitaShark
 
-** UPDATE: I now have a much faster and more memory efficient way of doing this. See DITA2HTML repo for a much simpler and more efficient way.**
+*UPDATE: I now have a much faster and more memory efficient way of doing this. See DITA2HTML repo for a much simpler and more efficient way.*
 
 Although this proved the basic concept (you can convert DITA without DITA-OT and all that jazz), in retrospect looking over this old code it's quite horrible. It's WAY too complex. The idea of parsing ditamaps so that you only convert the necessary dita files for that build seemed sensible at the time, but it adds complexity. That whole business of recursively parsing ditamaps and pushing things to be processed later onto the stack was also unnecessarily complicated (and a somewhat daft way to do things). 
 
